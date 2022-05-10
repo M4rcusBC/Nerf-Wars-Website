@@ -3,17 +3,38 @@
 }
 
 body {
+   
     margin: 0;
     padding: 0;
     background: white;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-weight: 300;
 }
 
-.headerContainer {
+.container {
+    font-family: 'Gill Sans', sans-serif;
+    font-weight: 300;
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 100px, 1fr, 1fr, 1fr, 1fr;
+    gap: 10px;
+
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.header {
     width: 100%;
+    height: max-content;
     margin: 0 auto;
-    position: fixed;
+    position: sticky;
+
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    
 }
 
 .navbar {
@@ -21,11 +42,19 @@ body {
     background: red;
     justify-content: space-between;
     align-items: flex-start;
+    grid-template-rows: 1, 2;
+    column-span: all;
+
+
 }
 
 
-.logo {
-    margin: 5 rem;
+.navbar-logo {
+    margin: 0.5rem; 
+}
+
+.navbar-links {
+    display: flex;
 }
 
 .navbar-links ul {
@@ -64,8 +93,6 @@ body {
     position: relative;
     top: 0;
     width: 0%;
-
-    transition: all ease-in-out 250ms;
 }
 
 .navbar-links a:hover::before {
@@ -90,11 +117,11 @@ body {
     border-radius: 10px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 750px) {
     .toggle-button {
         display: flex;
     }
-
+    
     .navbar-links {
       display: none;
       width: 100%;
@@ -121,4 +148,17 @@ body {
     .navbar-links.active {
         display: flex;
     }
+}
+
+.content-large {
+    margin-top: 100px;
+    grid-row-start: 1;
+    grid-row-end: span 2;
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+.content-large .embed-teams {
+    height: 100%;
+    width: 100%;
 }
